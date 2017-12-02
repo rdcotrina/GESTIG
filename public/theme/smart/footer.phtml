@@ -1,0 +1,146 @@
+<script type="text/javascript">
+    /*obtener el src de los js incluidos, para verificar que no sean suplantados*/
+    /*
+     $.each($('script'),function(){
+     alert($(this).attr('src'))
+     });
+     */
+    var SYS_LANG_MSN = null; /*objeto para los alertas y labels de botones y demas*/
+    var SYS_LANG_LABELS = null; /*objeto para los labels y placeholders*/
+    localStorage.setItem('sys_root', '<?php echo BASE_URL; ?>');
+
+
+    Exe.require("<?php echo $rutaLayout['js']; ?>plugins/jquery-touch/jquery.ui.touch-punch.min");
+
+    Exe.require("<?php echo $rutaLayout['js']; ?>bootstrap/bootstrap");
+    Exe.require("<?php echo $rutaLayout['js']; ?>plugins/validate/jquery.validate.min");
+    Exe.require("<?php echo $rutaLayout['js']; ?>plugins/jsTree/jstree.min");
+    Exe.require("<?php echo BASE_URL; ?>public/js/notification/SmartNotification.min");
+    Exe.require("<?php echo $rutaLayout['js']; ?>plugins/bootstrap-tagsinput/bootstrap-tagsinput");
+    Exe.require("<?php echo $rutaLayout['js']; ?>plugins/masked-input/jquery.maskedinput.min");
+    Exe.require("<?php echo $rutaLayout['js']; ?>plugins/jsTree/jstree.min");
+    Exe.require("<?php echo $rutaLayout['js']; ?>smartwidgets/jarvis.widget.min");
+    Exe.require("<?php echo BASE_URL; ?>public/js/scrollTable/scrollTable.jquery");
+    Exe.require("<?php echo BASE_URL; ?>public/js/livianGrid/livianGrid.jquery");
+    Exe.require("<?php echo BASE_URL; ?>public/js/chosen/chosen.jquery");
+    Exe.require("<?php echo BASE_URL; ?>public/js/browser/browser");
+    Exe.require("<?php echo BASE_URL; ?>public/js/printElement/jquery.printElement.min");
+    Exe.require("<?php echo BASE_URL; ?>public/js/autoCompleteTable/autoCompleteTable");
+    Exe.require("<?php echo BASE_URL; ?>public/js/arbol/arbol.jquery");
+    Exe.require("<?php echo BASE_URL; ?>public/js/ConcurrentThread/Concurrent.Thread");
+    
+    Exe.require("<?php echo BASE_URL; ?>vendor/client/Tools", function () {
+        Tools.traslation('<?php echo Obj()->Vendor->Session->get('sys_language') ?>');
+        Tools.getUserIP(function (ip) {
+            localStorage.setItem('sys_idLocal', ip);
+        });
+    });
+    Exe.require("<?php echo BASE_URL; ?>libs/Aes/js/aes", function () {
+        Exe.require("<?php echo BASE_URL; ?>libs/Aes/js/aesctr");
+    });
+    Exe.require("<?php echo BASE_URL; ?>libs/Aes/js/base64");
+    Exe.require("<?php echo BASE_URL; ?>libs/Aes/js/utf8");
+
+    Exe.require('<?php echo BASE_URL; ?>app/system/views/init/js/InitMenu');
+    Exe.require('<?php echo BASE_URL; ?>public/js/Button.sys');
+    
+    Exe.require("<?php echo $rutaLayout['js']; ?>plugins/pace/pace.min");
+
+</script>
+
+<?php if (!Obj()->Vendor->Session->get('sys_isLogin')) : ?>
+    <script type="text/javascript">
+        Exe.require([{system: 'Init'}], function () {
+            setTimeout(function () {
+                Exe.InitDom.postLogin();
+            }, 1000);
+        });
+    </script>
+<?php else: ?>
+
+
+
+    <script type="text/javascript">
+        Exe.require("<?php echo $rutaLayout['js']; ?>app.config", function () {
+            Exe.require("<?php echo $rutaLayout['js']; ?>demo.min", function () {
+                Exe.require("<?php echo $rutaLayout['js']; ?>app.min", function () {
+                    Exe.require("<?php echo $rutaLayout['js']; ?>speech/voicecommand.min");
+    <?php echo $addscript; ?>
+                    $('#smart-fixed-header').click(function () {
+                        Exe.InitDom.theme_opcion_user('1');
+                    });
+                    $('#smart-fixed-navigation').click(function () {
+                        Exe.InitDom.theme_opcion_user('2');
+                    });
+                    $('#smart-fixed-ribbon').click(function () {
+                        Exe.InitDom.theme_opcion_user('3');
+                    });
+
+                    $('#smart-fixed-footer').click(function () {
+                        Exe.InitDom.theme_opcion_user('4');
+                    });
+                    $('#smart-fixed-container').click(function () {
+                        Exe.InitDom.theme_opcion_user('5');
+                    });
+                    $('#smart-rtl').click(function () {
+                        Exe.InitDom.theme_opcion_user('6');
+                    });
+                    $('#smart-topmenu').click(function () {
+                        Exe.InitDom.theme_opcion_user('7');
+                    });
+                    $('#colorblind-friendly').click(function () {
+                        Exe.InitDom.theme_opcion_user('8');
+                    });
+
+                    $('#smart-style-0').click(function () {
+                        Exe.InitDom.theme_opcion_user('9');
+                    });
+                    $('#smart-style-1').click(function () {
+                        Exe.InitDom.theme_opcion_user('10');
+                    });
+                    $('#smart-style-2').click(function () {
+                        Exe.InitDom.theme_opcion_user('11');
+                    });
+                    $('#smart-style-3').click(function () {
+                        Exe.InitDom.theme_opcion_user('12');
+                    });
+                    $('#smart-style-4').click(function () {
+                        Exe.InitDom.theme_opcion_user('13');
+                    });
+                    $('#smart-style-5').click(function () {
+                        Exe.InitDom.theme_opcion_user('14');
+                    });
+                    $('#smart-style-6').click(function () {
+                        Exe.InitDom.theme_opcion_user('15');
+                    });
+                });
+            });
+        });
+
+        Exe.require([{system: 'Init'}], function () {
+            setTimeout(function () {
+                $('#void_menu').initMenuSmart({
+                    data: <?php echo json_encode(Obj()->Vendor->Session->get('sys_menuUser')) ?>
+                });
+
+            }, 500);
+        });
+
+
+    </script>
+    <!-- EXCEL FACTORY -->
+    <script type="text/javascript" src="<?php echo BASE_URL; ?>public/js/excelFactory/js/require.min.js" ></script>
+    <script type="text/javascript" src="<?php echo BASE_URL; ?>public/js/excelFactory/js/underscore.min.js" ></script>
+    <script type="text/javascript" src="<?php echo BASE_URL; ?>public/js/excelFactory/excelFactory.js" ></script>
+    
+<?php
+endif;
+?>
+<script type="text/javascript">
+    Exe.require("<?php echo BASE_URL; ?>config/prefix/btn");
+    Exe.require("<?php echo BASE_URL; ?>config/prefix/js");
+    Exe.require("<?php echo BASE_URL; ?>app/system/views/init/js/AppList");
+    
+</script>
+</body>
+</html>

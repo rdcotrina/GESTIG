@@ -1,0 +1,77 @@
+    
+
+    <script type="text/javascript">
+        /*obtener el src de los js incluidos, para verificar que no sean suplantados*/
+        /*
+         $.each($('script'),function(){
+            alert($(this).attr('src'))
+         });
+         */
+        var SYS_LANG_MSN = null; /*objeto para los alertas y labels de botones y demas*/
+        var SYS_LANG_LABELS = null; /*objeto para los labels y placeholders*/
+        localStorage.setItem('sys_root','<?php echo BASE_URL; ?>');
+        
+        Exe.require("<?php echo $rutaLayout['js']; ?>bootstrap");
+        Exe.require("<?php echo $rutaLayout['js']; ?>plugins/validate/jquery.validate.min");
+        Exe.require("<?php echo $rutaLayout['js']; ?>plugins/jsTree/jstree.min");
+        Exe.require("<?php echo BASE_URL; ?>public/js/notification/SmartNotification.min");
+        Exe.require("<?php echo $rutaLayout['js']; ?>plugins/iCheck/icheck.min");
+        Exe.require("<?php echo $rutaLayout['js']; ?>plugins/bootstrap-tagsinput/bootstrap-tagsinput");
+        Exe.require("<?php echo $rutaLayout['js']; ?>plugins/metisMenu/jquery.metisMenu");
+        Exe.require("<?php echo $rutaLayout['js']; ?>plugins/slimscroll/jquery.slimscroll.min");
+        Exe.require("<?php echo BASE_URL; ?>public/js/scrollTable/scrollTable.jquery");
+        Exe.require("<?php echo BASE_URL; ?>public/js/livianGrid/livianGrid.jquery");
+        
+        Exe.require("<?php echo BASE_URL; ?>vendor/client/Tools",function(){
+            Tools.traslation();
+            Tools.getUserIP(function(ip){
+                localStorage.setItem('sys_idLocal',ip);
+            });
+        });
+        Exe.require("<?php echo BASE_URL; ?>libs/Aes/js/aes",function(){
+            Exe.require("<?php echo BASE_URL; ?>libs/Aes/js/aesctr");
+        });    
+        Exe.require("<?php echo BASE_URL; ?>libs/Aes/js/base64");
+        Exe.require("<?php echo BASE_URL; ?>libs/Aes/js/utf8");
+        
+        Exe.require('<?php echo BASE_URL; ?>app/system/views/init/js/InitMenu');
+        Exe.require('<?php echo BASE_URL; ?>public/js/Button.sys');
+        
+        Exe.require("<?php echo $rutaLayout['js']; ?>plugins/pace/pace.min");
+        
+    </script>
+
+    <?php if (!Obj()->Vendor->Session->get('sys_isLogin')) : ?>
+        <script type="text/javascript">
+            Exe.require([{system: 'Init'}],function(){
+                setTimeout(function(){ Exe.InitDom.postLogin(); },500);
+            });
+        </script>
+    <?php else:?>
+        <script type="text/javascript">
+            Exe.require("<?php echo BASE_URL; ?>public/js/SmartMenus/jquery.smartmenus");
+            Exe.require([{system: 'Init'}],function(){
+                setTimeout(function(){
+                    $('#void_menu').initMenu({
+                        data: <?php echo json_encode(Obj()->Vendor->Session->get('sys_menuUser')) ?>
+                    }); 
+                    $('#main-menu').smartmenus({
+                        mainMenuSubOffsetX: 1,
+                        mainMenuSubOffsetY: -8,
+                        subMenusSubOffsetX: 1,
+                        subMenusSubOffsetY: -8
+                    });
+                },500);
+            });
+                        
+            
+        </script>
+        
+    <?php 
+        endif; 
+        require_once ROOT . 'config' . DS . 'prefix' . DS . 'js.php';
+        require_once ROOT . 'config' . DS . 'prefix' . DS . 'btn.php';
+    ?>
+        
+    </body>
+</html>

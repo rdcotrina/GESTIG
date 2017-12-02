@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8" collation="utf8_spanish_ci">gestion_membresia</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="app_persona" view="colnames">
+<left>643</left>
+<top>201</top>
+<width>219</width>
+<height>311</height>
+<sql_create_table>CREATE TABLE `app_persona` (
+  `persona` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_iglesia` int(11) DEFAULT NULL,
+  `tipo_miembro` int(11) DEFAULT NULL,
+  `tipo_documento_identidad` int(11) DEFAULT NULL,
+  `id_etapa_persona` int(11) DEFAULT NULL,
+  `apellido_paterno` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `apellido_materno` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `primer_nombre` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `segundo_nombre` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `nombre_completo` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `numero_documento_identidad` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `sexo` char(1) COLLATE utf8_spanish_ci DEFAULT 'H',
+  `activo` char(1) COLLATE utf8_spanish_ci DEFAULT '1',
+  `eliminado` char(1) COLLATE utf8_spanish_ci DEFAULT '0',
+  `crea_usuario` bigint(20) DEFAULT NULL,
+  `crea_fecha` datetime DEFAULT NULL,
+  `modifica_usuario` bigint(20) DEFAULT NULL,
+  `modifica_fecha` datetime DEFAULT NULL,
+  `crea_ip_publica` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `modifica_ip_publica` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `crea_ip_local` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `modifica_ip_local` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `crea_navegador` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `modifica_navegador` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `crea_hostname` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `modifica_hostname` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`persona`),
+  KEY `id_tipo_miembro` (`tipo_miembro`),
+  KEY `tipo_documento_identidad` (`tipo_documento_identidad`),
+  KEY `id_iglesia` (`id_iglesia`),
+  KEY `id_etapa_persona` (`id_etapa_persona`),
+  CONSTRAINT `app_persona_ibfk_1` FOREIGN KEY (`tipo_miembro`) REFERENCES `ig_tipo_miembro` (`tipo_miembro`),
+  CONSTRAINT `app_persona_ibfk_2` FOREIGN KEY (`tipo_documento_identidad`) REFERENCES `app_tipo_documento_identidad` (`tipo_documento_identidad`),
+  CONSTRAINT `app_persona_ibfk_3` FOREIGN KEY (`id_iglesia`) REFERENCES `ig_iglesia` (`id_iglesia`),
+  CONSTRAINT `app_persona_ibfk_4` FOREIGN KEY (`id_etapa_persona`) REFERENCES `ig_etapa_persona` (`id_etapa_persona`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_diezmo" view="colnames">
+<left>911</left>
+<top>373</top>
+<width>162</width>
+<height>311</height>
+<sql_create_table>CREATE TABLE `ig_diezmo` (
+  `diezmo` bigint(20) NOT NULL AUTO_INCREMENT,
+  `persona` bigint(20) DEFAULT NULL,
+  `tipo_moneda` int(11) DEFAULT NULL,
+  `importe` decimal(9,2) DEFAULT NULL,
+  `fecha_entrega` date DEFAULT NULL,
+  `eliminado` char(1) COLLATE utf8_spanish_ci DEFAULT '0' COMMENT 'Indica si esta eliminado.',
+  `crea_usuario` bigint(20) DEFAULT NULL COMMENT 'Usuario que registro.',
+  `crea_fecha` datetime DEFAULT NULL COMMENT 'Fecha que se registro.',
+  `crea_ip_publica` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip publica que se registro.',
+  `crea_ip_local` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip local que se registro.',
+  `crea_navegador` text COLLATE utf8_spanish_ci COMMENT 'Navegador que se registro.',
+  `crea_hostname` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'HostName que se registro.',
+  `modifica_usuario` bigint(20) DEFAULT NULL COMMENT 'Usuario que modifico.',
+  `modifica_fecha` datetime DEFAULT NULL COMMENT 'Fecha que se modifico.',
+  `modifica_ip_publica` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip publica que modifico.',
+  `modifica_ip_local` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip local que modifico.',
+  `modifica_navegador` text COLLATE utf8_spanish_ci COMMENT 'Navegador que modifico.',
+  `modifica_hostname` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'HostName que modifico.',
+  PRIMARY KEY (`diezmo`),
+  KEY `tipo_moneda` (`tipo_moneda`),
+  KEY `persona` (`persona`),
+  CONSTRAINT `ig_diezmo_ibfk_1` FOREIGN KEY (`tipo_moneda`) REFERENCES `ig_tipo_moneda` (`tipo_moneda`),
+  CONSTRAINT `ig_diezmo_ibfk_2` FOREIGN KEY (`persona`) REFERENCES `app_persona` (`persona`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_tipo_moneda" view="colnames">
+<left>760</left>
+<top>529</top>
+<width>130</width>
+<height>122</height>
+<sql_create_table>CREATE TABLE `ig_tipo_moneda` (
+  `tipo_moneda` int(11) NOT NULL AUTO_INCREMENT,
+  `simbolo` char(2) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `moneda` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`tipo_moneda`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_tipo_miembro" view="colnames">
+<left>263</left>
+<top>0</top>
+<width>170</width>
+<height>130</height>
+<sql_create_table>CREATE TABLE `ig_tipo_miembro` (
+  `tipo_miembro` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_miembro_nombre` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `activo` char(1) COLLATE utf8_spanish_ci DEFAULT '1' COMMENT 'Indica si esta activo.',
+  `eliminado` char(1) COLLATE utf8_spanish_ci DEFAULT '0' COMMENT 'Indica si esta eliminado.',
+  `crea_usuario` bigint(20) DEFAULT NULL COMMENT 'Usuario que registro.',
+  `crea_fecha` datetime DEFAULT NULL COMMENT 'Fecha que se registro.',
+  `crea_ip_publica` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip publica que se registro.',
+  `crea_ip_local` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip local que se registro.',
+  `crea_navegador` text COLLATE utf8_spanish_ci COMMENT 'Navegador que se registro.',
+  `crea_hostname` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'HostName que se registro.',
+  `modifica_usuario` bigint(20) DEFAULT NULL COMMENT 'Usuario que modifico.',
+  `modifica_fecha` datetime DEFAULT NULL COMMENT 'Fecha que se modifico.',
+  `modifica_ip_publica` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip publica que modifico.',
+  `modifica_ip_local` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip local que modifico.',
+  `modifica_navegador` text COLLATE utf8_spanish_ci COMMENT 'Navegador que modifico.',
+  `modifica_hostname` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'HostName que modifico.',
+  PRIMARY KEY (`tipo_miembro`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="app_tipo_documento_identidad" view="colnames">
+<left>949</left>
+<top>239</top>
+<width>219</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `app_tipo_documento_identidad` (
+  `tipo_documento_identidad` int(11) NOT NULL AUTO_INCREMENT,
+  `documento_identidad_nombre` varchar(70) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`tipo_documento_identidad`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_tipo_actividad" view="colnames">
+<left>13</left>
+<top>433</top>
+<width>176</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `ig_tipo_actividad` (
+  `id_tipo_actividad` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_actividad_nombre` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_tipo_actividad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_actividad" view="colnames">
+<left>219</left>
+<top>439</top>
+<width>148</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `ig_actividad` (
+  `id_actividad` int(11) NOT NULL AUTO_INCREMENT,
+  `id_tipo_actividad` int(11) DEFAULT NULL,
+  `actividad_nombre` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  PRIMARY KEY (`id_actividad`),
+  KEY `id_tipo_actividad` (`id_tipo_actividad`),
+  CONSTRAINT `ig_actividad_ibfk_1` FOREIGN KEY (`id_tipo_actividad`) REFERENCES `ig_tipo_actividad` (`id_tipo_actividad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_actividad_asistencia" view="colnames">
+<left>399</left>
+<top>453</top>
+<width>177</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `ig_actividad_asistencia` (
+  `id_actividad_asistencia` int(11) NOT NULL AUTO_INCREMENT,
+  `id_actividad` int(11) DEFAULT NULL,
+  `persona` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_actividad_asistencia`),
+  KEY `id_actividad` (`id_actividad`),
+  KEY `persona` (`persona`),
+  CONSTRAINT `ig_actividad_asistencia_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `ig_actividad` (`id_actividad`),
+  CONSTRAINT `ig_actividad_asistencia_ibfk_2` FOREIGN KEY (`persona`) REFERENCES `app_persona` (`persona`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_actividad_programa" view="colnames">
+<left>29</left>
+<top>599</top>
+<width>170</width>
+<height>165</height>
+<sql_create_table>CREATE TABLE `ig_actividad_programa` (
+  `id_actividad_programa` int(11) NOT NULL AUTO_INCREMENT,
+  `id_actividad` int(11) DEFAULT NULL,
+  `id_cargo` int(11) DEFAULT NULL COMMENT 'de que estara encargado en la direccion de la actividad',
+  `persona` bigint(20) DEFAULT NULL,
+  `cumplio` char(1) COLLATE utf8_spanish_ci DEFAULT '0',
+  PRIMARY KEY (`id_actividad_programa`),
+  KEY `id_actividad` (`id_actividad`),
+  KEY `persona` (`persona`),
+  KEY `id_cargo` (`id_cargo`),
+  CONSTRAINT `ig_actividad_programa_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `ig_actividad` (`id_actividad`),
+  CONSTRAINT `ig_actividad_programa_ibfk_3` FOREIGN KEY (`persona`) REFERENCES `app_persona` (`persona`),
+  CONSTRAINT `ig_actividad_programa_ibfk_4` FOREIGN KEY (`id_cargo`) REFERENCES `ig_cargo` (`id_cargo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_evaluacion_miembro" view="colnames">
+<left>369</left>
+<top>179</top>
+<width>182</width>
+<height>197</height>
+<sql_create_table>CREATE TABLE `ig_evaluacion_miembro` (
+  `id_evaluacion_miembro` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` char(5) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'este codigo se reinicia por año',
+  `persona` bigint(20) DEFAULT NULL,
+  `fech_inicio` date DEFAULT NULL,
+  `fecha_fin` date DEFAULT NULL,
+  `estado` enum('C','E','A') COLLATE utf8_spanish_ci DEFAULT 'E' COMMENT 'E:EJECUCION  C:CERRADO A:ANULADO .....para anular se debe justificar',
+  `anio` char(4) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_evaluacion_miembro`),
+  KEY `persona` (`persona`),
+  CONSTRAINT `ig_evaluacion_miembro_ibfk_1` FOREIGN KEY (`persona`) REFERENCES `app_persona` (`persona`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_evaluacion_miembro_reunion" view="colnames">
+<left>15</left>
+<top>82</top>
+<width>232</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `ig_evaluacion_miembro_reunion` (
+  `id_evaluacion_miembro_reunion` int(11) NOT NULL AUTO_INCREMENT,
+  `id_evaluacion_miembro` int(11) DEFAULT NULL,
+  `detalle` text COLLATE utf8_spanish_ci COMMENT 'lo que se trato en la reunion y conclusiones',
+  `fecha` datetime DEFAULT NULL COMMENT 'fecha y hora en que se llevo a cabo la reunion',
+  `tipo_miembro` int(11) DEFAULT NULL COMMENT 'al final del proceso se determina que tipo de miembro se le consigna al miembro, se actuaiza en tipo de miembro a la persona',
+  PRIMARY KEY (`id_evaluacion_miembro_reunion`),
+  KEY `id_evaluacion_miembro` (`id_evaluacion_miembro`),
+  KEY `tipo_miembro` (`tipo_miembro`),
+  CONSTRAINT `ig_evaluacion_miembro_reunion_ibfk_1` FOREIGN KEY (`id_evaluacion_miembro`) REFERENCES `ig_evaluacion_miembro` (`id_evaluacion_miembro`),
+  CONSTRAINT `ig_evaluacion_miembro_reunion_ibfk_2` FOREIGN KEY (`tipo_miembro`) REFERENCES `ig_tipo_miembro` (`tipo_miembro`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_evaluacion_miembro_evaluador" view="colnames">
+<left>51</left>
+<top>269</top>
+<width>246</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `ig_evaluacion_miembro_evaluador` (
+  `id_evaluacion_miembro_evaluador` int(11) NOT NULL AUTO_INCREMENT,
+  `id_evaluacion_miembro_reunion` int(11) DEFAULT NULL,
+  `persona` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_evaluacion_miembro_evaluador`),
+  KEY `id_evaluacion_miembro_reunion` (`id_evaluacion_miembro_reunion`),
+  KEY `persona` (`persona`),
+  CONSTRAINT `ig_evaluacion_miembro_evaluador_ibfk_1` FOREIGN KEY (`id_evaluacion_miembro_reunion`) REFERENCES `ig_evaluacion_miembro_reunion` (`id_evaluacion_miembro_reunion`),
+  CONSTRAINT `ig_evaluacion_miembro_evaluador_ibfk_2` FOREIGN KEY (`persona`) REFERENCES `app_persona` (`persona`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_reunion" view="colnames">
+<left>479</left>
+<top>839</top>
+<width>134</width>
+<height>197</height>
+<sql_create_table>CREATE TABLE `ig_reunion` (
+  `id_reunion` int(11) NOT NULL AUTO_INCREMENT,
+  `id_tipo_reunion` int(11) DEFAULT NULL,
+  `codigo` char(4) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'se reinicia por año',
+  `hora_inicio` time DEFAULT NULL,
+  `hora_fin` time DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `detalle` text COLLATE utf8_spanish_ci COMMENT 'descripcion detallada de la reuinion',
+  PRIMARY KEY (`id_reunion`),
+  KEY `id_tipo_reunion` (`id_tipo_reunion`),
+  CONSTRAINT `ig_reunion_ibfk_1` FOREIGN KEY (`id_tipo_reunion`) REFERENCES `ig_tipo_reunion` (`id_tipo_reunion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_reunion_agenda" view="colnames">
+<left>669</left>
+<top>854</top>
+<width>155</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `ig_reunion_agenda` (
+  `id_reunion_agenda` int(11) NOT NULL AUTO_INCREMENT,
+  `id_reunion` int(11) DEFAULT NULL,
+  `reunion_agenda_nombre` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_reunion_agenda`),
+  KEY `id_reunion` (`id_reunion`),
+  CONSTRAINT `ig_reunion_agenda_ibfk_1` FOREIGN KEY (`id_reunion`) REFERENCES `ig_reunion` (`id_reunion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_tipo_reunion" view="colnames">
+<left>236</left>
+<top>839</top>
+<width>167</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `ig_tipo_reunion` (
+  `id_tipo_reunion` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_reunion_nombre` varchar(80) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_tipo_reunion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_reunion_pedido" view="colnames">
+<left>309</left>
+<top>596</top>
+<width>151</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `ig_reunion_pedido` (
+  `id_reunion_pedido` int(11) NOT NULL AUTO_INCREMENT,
+  `id_reunion` int(11) DEFAULT NULL,
+  `pedido` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `persona` bigint(20) DEFAULT NULL COMMENT 'persona que realiza el pedido',
+  `aprobado` char(1) COLLATE utf8_spanish_ci DEFAULT '0',
+  PRIMARY KEY (`id_reunion_pedido`),
+  KEY `id_reunion` (`id_reunion`),
+  KEY `persona` (`persona`),
+  CONSTRAINT `ig_reunion_pedido_ibfk_1` FOREIGN KEY (`id_reunion`) REFERENCES `ig_reunion` (`id_reunion`),
+  CONSTRAINT `ig_reunion_pedido_ibfk_2` FOREIGN KEY (`persona`) REFERENCES `app_persona` (`persona`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_reunion_asistencia" view="colnames">
+<left>573</left>
+<top>609</top>
+<width>169</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `ig_reunion_asistencia` (
+  `id_reunion_asistencia` int(11) NOT NULL AUTO_INCREMENT,
+  `id_reunion` int(11) DEFAULT NULL,
+  `persona` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_reunion_asistencia`),
+  KEY `id_reunion` (`id_reunion`),
+  KEY `persona` (`persona`),
+  CONSTRAINT `ig_reunion_asistencia_ibfk_1` FOREIGN KEY (`id_reunion`) REFERENCES `ig_reunion` (`id_reunion`),
+  CONSTRAINT `ig_reunion_asistencia_ibfk_2` FOREIGN KEY (`persona`) REFERENCES `app_persona` (`persona`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_iglesia" view="colnames">
+<left>533</left>
+<top>9</top>
+<width>133</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `ig_iglesia` (
+  `id_iglesia` int(11) NOT NULL AUTO_INCREMENT,
+  `iglesia_nombre` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `direccion` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_iglesia`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_estructura" view="colnames">
+<left>690</left>
+<top>13</top>
+<width>150</width>
+<height>110</height>
+<sql_create_table>CREATE TABLE `ig_estructura` (
+  `id_estructura` int(11) NOT NULL AUTO_INCREMENT,
+  `id_iglesia` int(11) DEFAULT NULL,
+  `parent` int(11) DEFAULT NULL COMMENT 'estructura a la que pertenece el area',
+  `estructura_nombre` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_estructura`),
+  KEY `id_iglesia` (`id_iglesia`),
+  CONSTRAINT `ig_estructura_ibfk_1` FOREIGN KEY (`id_iglesia`) REFERENCES `ig_iglesia` (`id_iglesia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_cargo" view="colnames">
+<left>1189</left>
+<top>109</top>
+<width>129</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `ig_cargo` (
+  `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
+  `cargo_nombre` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_cargo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_estructura_directiva" view="colnames">
+<left>919</left>
+<top>19</top>
+<width>177</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `ig_estructura_directiva` (
+  `id_estructura_directiva` int(11) NOT NULL AUTO_INCREMENT,
+  `id_estructura` int(11) DEFAULT NULL,
+  `persona` bigint(20) DEFAULT NULL,
+  `id_cargo` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_estructura_directiva`),
+  KEY `id_estructura` (`id_estructura`),
+  KEY `id_cargo` (`id_cargo`),
+  KEY `persona` (`persona`),
+  CONSTRAINT `ig_estructura_directiva_ibfk_1` FOREIGN KEY (`id_estructura`) REFERENCES `ig_estructura` (`id_estructura`),
+  CONSTRAINT `ig_estructura_directiva_ibfk_2` FOREIGN KEY (`id_cargo`) REFERENCES `ig_cargo` (`id_cargo`),
+  CONSTRAINT `ig_estructura_directiva_ibfk_3` FOREIGN KEY (`persona`) REFERENCES `app_persona` (`persona`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_etapa_persona" view="colnames">
+<left>1214</left>
+<top>335</top>
+<width>182</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `ig_etapa_persona` (
+  `id_etapa_persona` int(11) NOT NULL AUTO_INCREMENT,
+  `etapa_persona_nombre` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `activo` char(1) COLLATE utf8_spanish_ci DEFAULT '1' COMMENT 'Indica si esta activo.',
+  `eliminado` char(1) COLLATE utf8_spanish_ci DEFAULT '0' COMMENT 'Indica si esta eliminado.',
+  `crea_usuario` bigint(20) DEFAULT NULL COMMENT 'Usuario que registro.',
+  `crea_fecha` datetime DEFAULT NULL COMMENT 'Fecha que se registro.',
+  `crea_ip_publica` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip publica que se registro.',
+  `crea_ip_local` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip local que se registro.',
+  `crea_navegador` text COLLATE utf8_spanish_ci COMMENT 'Navegador que se registro.',
+  `crea_hostname` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'HostName que se registro.',
+  `modifica_usuario` bigint(20) DEFAULT NULL COMMENT 'Usuario que modifico.',
+  `modifica_fecha` datetime DEFAULT NULL COMMENT 'Fecha que se modifico.',
+  `modifica_ip_publica` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip publica que modifico.',
+  `modifica_ip_local` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Ip local que modifico.',
+  `modifica_navegador` text COLLATE utf8_spanish_ci COMMENT 'Navegador que modifico.',
+  `modifica_hostname` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'HostName que modifico.',
+  PRIMARY KEY (`id_etapa_persona`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+<table name="ig_caja" view="colnames">
+<left>1145</left>
+<top>512</top>
+<width>97</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `ig_caja` (
+  `id_caja` int(11) NOT NULL AUTO_INCREMENT,
+  `id_iglesia` int(11) DEFAULT NULL,
+  `concepto` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tipo` enum('I','E') COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'I:INGRESO  E:EGRESO',
+  `importe` decimal(9,2) DEFAULT '0.00',
+  `fecha` date DEFAULT NULL COMMENT 'fecha en que se realizo el movimiento',
+  PRIMARY KEY (`id_caja`),
+  KEY `id_iglesia` (`id_iglesia`),
+  CONSTRAINT `ig_caja_ibfk_1` FOREIGN KEY (`id_iglesia`) REFERENCES `ig_iglesia` (`id_iglesia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

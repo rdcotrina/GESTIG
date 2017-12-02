@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><?php echo APP_COMPANY ?></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="public/img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="public/img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="public/img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="public/img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="public/img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="public/img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="public/img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="public/img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="public/img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="public/img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="public/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="public/img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="public/img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="public/img/favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="public/img/favicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- BOOTSTRAP -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $rutaLayout['css']; ?>bootstrap.min.css">
+        <!-- SPINNERS -->
+        <link href="<?php echo $rutaLayout['css']; ?>plugins/textSpinners/spinners.css" rel="stylesheet">
+        <!-- JSTREE -->
+        <link href="<?php echo $rutaLayout['css']; ?>plugins/jsTree/style.min.css" rel="stylesheet">
+        <!-- JQUERY UI -->
+        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/js/jquery/jquery-ui.css">
+        <!-- FONT AWESOME V.4.07 -->
+        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/external/font-awesome/css/font-awesome.min.css">
+        <!-- ANIMATE -->
+        <link href="<?php echo $rutaLayout['css']; ?>animate.css" rel="stylesheet" >
+        <!-- ICHECK -->
+        <link href="<?php echo $rutaLayout['css']; ?>plugins/iCheck/custom.css" rel="stylesheet">
+        <!-- TAGSINPUT -->
+        <link href="<?php echo $rutaLayout['css']; ?>plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+        <!-- SMART NOTIFICATION -->
+        <link href="<?php echo BASE_URL; ?>public/js/notification/SmartNotification.css" rel="stylesheet" >
+        <!-- STYLE -->
+        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/css/generic.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/css/style.css">
+        <!-- MENU -->
+        <link href="<?php echo BASE_URL; ?>public/css/menu.css" rel="stylesheet" type="text/css" />
+
+        <script src="<?php echo BASE_URL; ?>public/js/jquery/jquery.js"></script>
+        <script src="<?php echo BASE_URL; ?>public/js/jquery/jquery-ui.js"></script>
+
+        <!-- SCRIPT CORE -->
+        <script src="<?php echo BASE_URL; ?>vendor/client/Ajax.js"></script>
+        <script src="<?php echo BASE_URL; ?>vendor/client/Exe.js"></script>
+
+    </head>
+    <body class="pace-done skin-3 mini-navbar">
+
+        <?php if (Obj()->Vendor->Session->get('sys_isLogin')) : ?>
+
+
+            <div id="wrapper">
+
+                <div id="page-wrapper" class="gray-bg dashbard-1">
+                    <div class="row border-bottom">
+                        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0;background:#424242">
+                            <div class="navbar-header" style="margin-left: 10px;">
+                                <nav id="main-nav" role="navigation">
+                                    <ul id="main-menu" class="sm sm-vertical sm-blue">
+                                        <li>
+                                            <h2>
+                                                <a href="javascript:;" class="has-submenu" style="height: 50px;padding: 13px;min-width: 140px">
+                                                    <i class="fa fa-folder-open"></i> 
+                                                    <span class="tr-language" data-tr="m_app"></span>
+                                                </a>
+                                            </h2>
+                                            <ul id="void_menu"  class="sm-nowrap">
+                                                <li>
+                                                    <span class="scroll-up" style="top: auto; left: 0px; margin-left: 178px; width: 358px; z-index: 10004; margin-top: -446px; visibility: hidden; display: none;"><span class="scroll-up-arrow"></span></span>
+                                                    <span class="scroll-down" style="display: none; top: auto; left: 0px; margin-left: 178px; width: 358px; z-index: 10004; margin-top: 138px; visibility: hidden;"><span class="scroll-down-arrow"></span></span>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>                        
+                                </nav>
+                            </div>
+                            <div class="navbar-header navbar-form-custom" style="margin-left: 10px;">
+                                <input type="text" class="form-control tr-language-ph search_menu" data-trph="buscar_menu"/>
+                            </div>
+                            <ul class="nav navbar-top-links navbar-right">
+                                <li>
+                                    <div class=" profile-element" style="display: block;float: left"> 
+
+                                        <span data-toggle="dropdown" class="dropdown-toggle" href="#" style="display: inline-block;cursor: pointer">
+                                            <span class="text-muted text-xs block" style="color:#fff"><?php echo Obj()->Vendor->Session->get('sys_defaultNameRol') ?> <b class="caret"></b></span> 
+                                        </span>
+                                        <ul class="dropdown-menu animated fadeInRight m-t-xs" >
+                                            <?php
+                                            $cssrol = '';
+                                            foreach (Obj()->Vendor->Session->get('sys_roles') as $key => $value):
+                                                $cssrol = ($value['nrol'] != Obj()->Vendor->Session->get('sys_defaultNameRol')) ? 'arol' : '';
+                                                ?>
+                                                <?php if ($value['nrol'] != Obj()->Vendor->Session->get('sys_defaultNameRol')): ?>
+                                                    <li><a href="javascript:;" class="<?php echo $cssrol ?>" data-k="<?php echo $value['id_rol'] ?>"><i class="fa fa-bars"></i> <?php echo $value['nrol'] ?></a></li>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                        <script>
+                                            $('.arol').click(function () {
+                                                Exe.InitDom.changeRol(this);
+                                            });
+                                        </script>
+                                    </div>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-envelope" style="color:#fff"></i>  <span class="label label-warning">16</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-messages">
+                                        <li>
+                                            <div class="dropdown-messages-box">
+                                                <a href="profile.html" class="pull-left">
+                                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                                </a>
+                                                <div class="media-body">
+                                                    <small class="pull-right">46h ago</small>
+                                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                                    <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="dropdown-messages-box">
+                                                <a href="profile.html" class="pull-left">
+                                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                                </a>
+                                                <div class="media-body ">
+                                                    <small class="pull-right text-navy">5h ago</small>
+                                                    <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                                    <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="dropdown-messages-box">
+                                                <a href="profile.html" class="pull-left">
+                                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                                </a>
+                                                <div class="media-body ">
+                                                    <small class="pull-right">23h ago</small>
+                                                    <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                                    <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="text-center link-block">
+                                                <a href="mailbox.html">
+                                                    <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-bell" style="color:#fff"></i>  <span class="label label-primary">8</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-alerts">
+                                        <li>
+                                            <a href="mailbox.html">
+                                                <div>
+                                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="profile.html">
+                                                <div>
+                                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="grid_options.html">
+                                                <div>
+                                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="text-center link-block">
+                                                <a href="notifications.html">
+                                                    <strong>See All Alerts</strong>
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="info_user">
+                                    <span data-toggle="dropdown" class="dropdown-toggle">
+                                        <img alt="image" class="img-circle" src="<?php echo BASE_URL; ?>public/img/profile_small.jpg" style="margin-top: -5px;cursor: pointer" title="<?php echo Obj()->Vendor->Session->get('sys_nameUser') ?>"/>
+                                    </span>
+                                    <ul class="dropdown-menu animated fadeInRight m-t-xs" >
+                                        <li><a href="javascript:;" class="lv-cp"><i class="fa fa-lock"></i> <span class="tr-language" data-tr="cambia_pass"></span></a></li>
+                                        <li><a href="javascript:;" class="lv-out"><i class="fa fa-sign-out"></i> <span class="tr-language" data-tr="out"></span></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                    <!-- #MAIN CONTENT -->
+                    <div id="content-sys" style="margin-top: 10px">
+                        <!-- CONTENEDOR DE LOS TABS GENERALES DE MODULOS -->
+                        <div id="cont-general-tabs-sys" style="background: #F4F6FA;border: 0px;">
+                            <ul id="cont-tabs-sys" style="border: 0px;">
+                            </ul>
+                            <div id="cont-main-sys" style="background: #ffffff;border: 1px solid #ddd"></div>
+                        </div>
+                        <!-- FIN CONTENEDOR DE LOS TABS GENERALES DE MODULOS -->
+                        <!--CONTENEDOR DE LOS MODALS-->
+                        <div id="cont-modal-sys"></div>
+                        <!--FIN CONTENEDOR DE LOS MODALS-->
+                    </div>
+
+                    <!-- END #MAIN CONTENT -->
+
+                    <div id="process-general" class="ibox-content sk-loading" onclick="$(this).fadeOut()">
+                        <div class="sk-spinner sk-spinner-chasing-dots">
+                            <div class="sk-dot1"></div>
+                            <div class="sk-dot2"></div>
+                        </div>
+                    </div> 
+
+                </div>
+
+            </div>
+
+            <script>
+                $('.lv-out').click(function () {
+                    Exe.InitDom.logOut(_tk_);
+                });
+                $('.lv-cp').click(function () {
+                    alert('cambia pass');
+                });
+
+                //var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                //(function(){
+                //var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                //s1.async=true;
+                //s1.src='https://embed.tawk.to/594aa3e7e9c6d324a4736a15/default';
+                //s1.charset='UTF-8';
+                //s1.setAttribute('crossorigin','*');
+                //s0.parentNode.insertBefore(s1,s0);
+                //})();
+
+            </script>
+        <?php endif; ?>

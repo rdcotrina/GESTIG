@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en-us" >
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title><?php echo APP_COMPANY ?></title>        
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="<?php echo BASE_URL; ?>public/img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="<?php echo BASE_URL; ?>public/img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="<?php echo BASE_URL; ?>public/img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="<?php echo BASE_URL; ?>public/img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="<?php echo BASE_URL; ?>public/img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="<?php echo BASE_URL; ?>public/img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="<?php echo BASE_URL; ?>public/img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="<?php echo BASE_URL; ?>public/img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="<?php echo BASE_URL; ?>public/img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="<?php echo BASE_URL; ?>public/img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?php echo BASE_URL; ?>public/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="<?php echo BASE_URL; ?>public/img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo BASE_URL; ?>public/img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="<?php echo BASE_URL; ?>public/img/favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="<?php echo BASE_URL; ?>public/img/favicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- Basic Styles -->
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $rutaLayout['css']; ?>bootstrap.min.css">
+
+
+        <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $rutaLayout['css']; ?>smartadmin-production-plugins.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $rutaLayout['css']; ?>smartadmin-production.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $rutaLayout['css']; ?>smartadmin-skins.min.css">
+
+        <!-- SmartAdmin RTL Support is under construction-->
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $rutaLayout['css']; ?>smartadmin-rtl.min.css">
+
+        <!-- FONT AWESOME V.4.07 -->
+        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/external/font-awesome/css/font-awesome.min.css">
+
+        <!-- SPINNERS -->
+        <link href="<?php echo $rutaLayout['css']; ?>plugins/textSpinners/spinners.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo BASE_URL; ?>public/css/generic.css">
+
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $rutaLayout['css']; ?>animate.css">
+
+        <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $rutaLayout['css']; ?>demo.min.css">
+
+        <!-- TAGSINPUT -->
+        <link href="<?php echo $rutaLayout['css']; ?>plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+        <!-- SMART NOTIFICATION -->
+        <link href="<?php echo BASE_URL; ?>public/js/notification/SmartNotification.css" rel="stylesheet" >
+
+        <!-- JSTREE -->
+        <link href="<?php echo $rutaLayout['js']; ?>plugins/jsTree/jstree.min.css" rel="stylesheet" >
+
+        <!-- CHOSEN -->
+        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/js/chosen/chosen.css">
+        
+        <!-- ARBOL -->
+        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/js/arbol/arbol.css">
+        
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo BASE_URL; ?>public/js/autoCompleteTable/autoCompleteTable.css">
+        
+        <!-- Specifying a Webpage Icon for Web Clip
+                 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+        <link rel="apple-touch-icon" href="<?php echo $rutaLayout['img']; ?>splash/sptouch-icon-iphone.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="<?php echo $rutaLayout['img']; ?>splash/touch-icon-ipad.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="<?php echo $rutaLayout['img']; ?>splash/touch-icon-iphone-retina.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="<?php echo $rutaLayout['img']; ?>splash/touch-icon-ipad-retina.png">
+
+        <!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <!-- Startup image for web apps -->
+        <link rel="apple-touch-startup-image" href="<?php echo $rutaLayout['css']; ?>splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+        <link rel="apple-touch-startup-image" href="<?php echo $rutaLayout['css']; ?>splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+        <link rel="apple-touch-startup-image" href="<?php echo $rutaLayout['css']; ?>splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/js/jquery/jquery-ui.css">-->
+        
+        <script src="<?php echo BASE_URL; ?>public/js/jquery/jquery.js"></script>
+        <script src="<?php echo BASE_URL; ?>public/js/jquery/jquery-ui.js"></script>
+
+        <!-- SCRIPT CORE -->
+        <script src="<?php echo BASE_URL; ?>vendor/client/Ajax.js"></script>
+        <script src="<?php echo BASE_URL; ?>vendor/client/Exe.js"></script>
+
+    </head>
+    <?php
+    $encabezado_fijo = '';
+    $menu_fijo = '';
+    $navegador_fijo = '';
+    $footer_fijo = '';
+    $centrado = '';
+    $menu_derecha = '';
+    $menu_top = '';
+    $daltonicos = '';
+    $theme = '';
+    $addscript = '';
+
+
+# echo (Obj()->Vendor->Session->get('sys_themeUserArray')['ax']);
+
+
+    $row2 = Obj()->Vendor->Session->get('sys_themeUserArray');
+#print_r($row2);
+
+    $encabezado_fijo = isset($row2["encabezado_fijo"]) ? $row2["encabezado_fijo"] : '';
+    $menu_fijo = isset($row2["menu_fijo"]) ? $row2["menu_fijo"] : '';
+    $navegador_fijo = isset($row2["navegador_fijo"]) ? $row2["navegador_fijo"] : '';
+    $footer_fijo = isset($row2["footer_fijo"]) ? $row2["footer_fijo"] : '';
+    $centrado = isset($row2["centrado"]) ? $row2["centrado"] : '';
+    $menu_derecha = isset($row2["menu_derecha"]) ? $row2["menu_derecha"] : '';
+    $menu_top = isset($row2["menu_top"]) ? $row2["menu_top"] : '';
+    $daltonicos = isset($row2["daltonicos"]) ? $row2["daltonicos"] : '';
+    $theme = isset($row2["theme"]) ? $row2["theme"] : '';
+
+    $addscript .= "$('#smart-fixed-header').prop('checked'," . ($encabezado_fijo != '' ? 'true' : 'false') . ");";
+    $addscript .= "$('#smart-fixed-navigation').prop('checked'," . ($menu_fijo != '' ? 'true' : 'false') . ");";
+    $addscript .= "$('#smart-fixed-ribbon').prop('checked'," . ($navegador_fijo != '' ? 'true' : 'false') . ");";
+    $addscript .= "$('#smart-fixed-footer').prop('checked'," . ($footer_fijo != '' ? 'true' : 'false') . ");";
+    $addscript .= "$('#smart-fixed-container').prop('checked'," . ($centrado != '' ? 'true' : 'false') . ");";
+    $addscript .= "$('#smart-rtl').prop('checked'," . ($menu_derecha != '' ? 'true' : 'false') . ");";
+    $addscript .= "$('#smart-topmenu').prop('checked'," . ($menu_top != '' ? 'true' : 'false') . ");";
+    $addscript .= "$('#colorblind-friendly').prop('checked'," . ($daltonicos != '' ? 'true' : 'false') . ");";
+
+    $addscript .= "$('#smart-style-0').html('Defecto');";
+    $addscript .= "$('#smart-style-1').html('Oscuro Elegante');";
+    $addscript .= "$('#smart-style-2').html('Ultra Claro');";
+    $addscript .= "$('#smart-style-3').html('Anaranjado');";
+    $addscript .= "$('#smart-style-4').html('Pixel');";
+    $addscript .= "$('#smart-style-5').html('Trasparente');";
+    $addscript .= "$('#smart-style-6').html('Diseño del Material <sup>beta</sup></a>');";
+    if ($theme == '') {
+        $theme = 'smart-style-0';
+    }
+    $addscript .= "$('#$theme').prepend('<i class=\"fa fa-check fa-fw\" id=\"skin-checked\"></i>');";
+
+    $body = trim("$encabezado_fijo $menu_fijo $navegador_fijo $footer_fijo $centrado $menu_derecha $menu_top $daltonicos $theme");
+    ?>
+
+
+    <body class="<?php echo $body; ?>">
+        <?php if (Obj()->Vendor->Session->get('sys_isLogin')) : ?>
+            <header id="header">
+
+                <div id="logo-group">
+                    <!-- PLACE YOUR LOGO HERE -->
+                    <a  href="<?php echo BASE_URL; ?>" >
+                        <span id="logo"> <img src="<?php echo $rutaLayout['img']; ?>logo.png"> </span> 
+                    </a>
+                    <!-- END LOGO PLACEHOLDER -->
+
+                    <!-- Note: The activity badge color changes when clicked and resets the number to 0
+                    Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+                    <span id="activity" class="activity-dropdown" style="position: absolute;"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
+
+                    <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
+                    <div class="ajax-dropdown">
+                        <!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
+                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                            <label class="btn btn-default">
+                                <input type="radio" name="activity" id="">
+                                Msgs (14) 
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="activity" id="">
+                                notify (3) 
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="activity" id="">
+                                Tasks (4) 
+                            </label>
+                        </div>
+
+
+
+                        <!-- notification content -->
+                        <div class="ajax-notifications custom-scroll">
+                            <div class="alert alert-transparent">
+                                <h4>Click a button to show messages here</h4>
+                                This blank page message helps protect your privacy, or you can show the first message here automatically.
+                            </div>
+
+                            <i class="fa fa-lock fa-4x fa-border"></i>
+                        </div>
+
+
+                        <!-- end notification content -->
+
+                        <!-- footer: refresh area -->
+                        <span> Last updated on: 12/12/2013 9:43AM
+                            <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
+                                <i class="fa fa-refresh"></i>
+                            </button> 
+                        </span>
+                        <!-- end footer -->
+
+
+                    </div>
+
+                </div>
+
+                <!-- projects dropdown -->
+                <div class="project-context hidden-xs">
+                    <span class="label tr-language" data-tr="proyectos"></span>
+                    <span id="project-selector" class="popover-trigger-element dropdown-toggle" data-toggle="dropdown"><span class="tr-language" data-tr="proyecto_recuentes"></span> <i class="fa fa-angle-down"></i></span>
+
+                    <!-- Suggestion: populate this list with fetch and push technique -->
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Notes on pipeline upgradee</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Assesment Report for merchant account</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
+                        </li>
+                    </ul>
+                    <!-- end dropdown-menu-->       
+                </div>
+
+                <!-- end projects dropdown -->
+
+                <div class="pull-left">
+                    <!-- multiple lang dropdown : find all flags in the flags page -->
+                    <ul class="header-dropdown-list hidden-xs" >
+
+                        <li class="">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="img/blank.gif" class="<?php echo Obj()->Vendor->Session->get('sys_languageFlag') ?>" > <i class="fa fa-angle-down"></i> </a>
+                            <ul class="dropdown-menu" style="min-width: 50px">
+                                <?php foreach (Obj()->Vendor->Session->get('sys_idioms') as $value): ?>
+                                    <?php if ($value['language'] != Obj()->Vendor->Session->get('sys_language')): ?>
+                                        <li>
+                                            <a href="javascript:void(0);" class="_bandera" data-lang="<?php echo $value['language'] ?>"><img src="img/blank.gif" class="<?php echo $value['bandera'] ?>"></a>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        </li>
+                    </ul>
+                    <script>
+                        $('._bandera').click(function () {
+                            Exe.InitDom.changeIdiom(this);
+                        });
+                    </script>
+                </div>
+
+                <!-- pulled right: nav area -->
+                <div class="pull-right">
+                    <!-- collapse menu button -->
+                    <div id="hide-menu" class="btn-header pull-right">
+                        <span> <a href="javascript:void(0);" title="Collapse Menu" data-action="toggleMenu"><i class="fa fa-reorder"></i></a> </span>
+                    </div>
+                    <!-- end collapse menu -->
+
+                    <!-- #MOBILE -->
+                    <!-- Top menu profile link : this shows only when top menu is active -->
+                    <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+                        <li class="">
+                            <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
+                                <img src="<?php echo $rutaLayout['img']; ?>/avatars/sunny.png" alt="<?php echo Obj()->Vendor->Session->get('sys_nameUser') ?>" class="online" />
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <span class="tr-language" data-tr="atajo"></span></a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="javascript:;" class="padding-10 padding-top-5 padding-bottom-5 lv-out" data-user="<?php echo Obj()->Vendor->Session->get('sys_nameUser') ?>"><i class="fa fa-sign-out fa-lg"></i> <strong><span class="tr-language" data-tr="cerrar_session"></span></strong></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                    <!-- logout button -->
+                    <div id="logout" class="btn-header transparent pull-right">
+                        <span> <a href="javascript:;" class="lv-out tr-language-title" data-trtitle="cerrar_session" data-user="<?php echo Obj()->Vendor->Session->get('sys_nameUser') ?>"><i class="fa fa-sign-out"></i></a> </span>
+                    </div>
+                    <!-- end logout button -->
+
+                    <!-- search mobile button (this is hidden till mobile view port) -->
+                    <div id="search-mobile" class="btn-header transparent pull-right">
+                        <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+                    </div>
+                    <!-- end search mobile button -->
+
+
+                    <!-- input: search field -->
+                    <form action="#ajax/search.php" class="header-search pull-right">
+                        <input type="text" name="param" class="tr-language-ph" id="search-fld" data-trph="search_menu">
+                        <button type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+                    </form>
+                    <!-- end input: search field -->
+
+                    <!-- fullscreen button -->
+                    <div id="fullscreen" class="btn-header transparent pull-right">
+                        <span> <a href="javascript:void(0);" class="tr-language-title" data-trtitle="pantalla_full" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i></a> </span>
+                    </div>
+                    <!-- end fullscreen button -->
+
+                    <!-- #Voice Command: Start Speech -->
+                    <div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
+                        <div> 
+                            <a href="javascript:void(0)" title="Voice Command" data-action="voiceCommand"><i class="fa fa-microphone"></i></a> 
+                            <div class="popover bottom"><div class="arrow"></div>
+                                <div class="popover-content">
+                                    <h4 class="vc-title">Voice command activated <br><small>Please speak clearly into the mic</small></h4>
+                                    <h4 class="vc-title-error text-center">
+                                        <i class="fa fa-microphone-slash"></i> Voice command failed
+                                        <br><small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
+                                        <br><small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
+                                    </h4>
+                                    <a href="javascript:void(0);" class="btn btn-success" onclick="commands.help()">See Commands</a> 
+                                    <a href="javascript:void(0);" class="btn bg-color-purple txt-color-white" onclick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end voice command -->
+
+
+
+                    <ul class="header-dropdown-list hidden-xs" >
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                                <i class="fa fa-bars"></i> <span> <?php echo Obj()->Vendor->Session->get('sys_defaultNameRol') ?></span> <i class="fa fa-angle-down"></i> 
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <?php
+                                $cssrol = '';
+                                foreach (Obj()->Vendor->Session->get('sys_roles') as $key => $value):
+                                    $cssrol = ($value['nrol'] != Obj()->Vendor->Session->get('sys_defaultNameRol')) ? 'arol' : '';
+                                    ?>
+                                    <?php if ($value['nrol'] != Obj()->Vendor->Session->get('sys_defaultNameRol')): ?>
+                                        <li><a href="javascript:;" class="<?php echo $cssrol ?>" data-k="<?php echo $value['id_rol'] ?>"><i class="fa fa-bars"></i> <?php echo $value['nrol'] ?></a></li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <script>
+                        $('.arol').click(function () {
+                            Exe.InitDom.changeRol(this);
+                        });
+                    </script>
+
+
+
+                    <!-- end multiple lang -->
+                </div>
+
+            </header>
+
+            <!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+            Note: These tiles are completely responsive,
+            you can add as many as you like
+            -->
+            <div id="shortcut">
+                <ul>
+                    <li>
+                        <a href="#ajax/inbox.php" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span> </a>
+                    </li>
+                    <li>
+                        <a href="#ajax/calendar.php" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
+                    </li>
+                    <li>
+                        <a href="#ajax/gmap-xml.php" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
+                    </li>
+                    <li>
+                        <a href="#ajax/invoice.php" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span> </a>
+                    </li>
+                    <li>
+                        <a href="#ajax/gallery.php" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
+                    </li>
+                    <li>
+                        <a href="#ajax/profile.php" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END SHORTCUT AREA -->
+
+
+            <!-- Left panel : Navigation area -->
+            <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+            <aside id="left-panel">
+                <!-- User info -->
+                <div class="login-info">
+                    <span> <!-- User image size is adjusted inside CSS, it should stay as is -->
+
+                        <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+                            <img src="<?php echo $rutaLayout['img']; ?>avatars/sunny.png" alt="me" class="online" />
+                            <span>
+                                <?php echo Obj()->Vendor->Session->get('sys_nameUser') ?>
+                            </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+
+                    </span>
+                </div>
+                <!-- end user info -->
+
+
+                <!-- NAVIGATION : This navigation is also responsive
+
+                To make this navigation dynamic please make sure to link the node
+                (the reference to the nav > ul) after page load. Or the navigation
+                will not initialize.
+                -->
+                <nav>
+                    <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+                    Please note that these links work a bit different than
+                    traditional hre="" links. See documentation for details.
+                    -->
+
+                    <ul id="void_menu"></ul>
+                </nav>
+
+                <span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>
+
+
+            </aside>
+
+            <!-- END NAVIGATION --><!-- ==========================CONTENT STARTS HERE ========================== -->
+            <!-- MAIN PANEL -->
+            <div id="main" role="main">
+
+                <!-- RIBBON -->
+                <div id="ribbon">
+
+                    <!-- You can also add more buttons to the
+                    ribbon for further usability
+
+                    Example below:
+
+                    <span class="ribbon-button-alignment pull-right">
+                    <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+                    <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+                    <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+                    </span> -->
+
+                </div>
+
+                <!-- END RIBBON -->
+
+                <!-- #MAIN CONTENT -->
+                <div id="content-sys" style="margin-top: -5px;padding: 10px">
+                    <!-- CONTENEDOR DE LOS TABS GENERALES DE MODULOS -->
+                    <div id="cont-general-tabs-sys" style="background: #F4F6FA;border: 0px;">
+                        <ul id="cont-tabs-sys" style="border: 0px;">
+                        </ul>
+                        <div id="cont-main-sys" style="background: #ffffff;border-top: 1px solid #ddd"></div>
+                    </div>
+                    <!-- FIN CONTENEDOR DE LOS TABS GENERALES DE MODULOS -->
+                    <!--CONTENEDOR DE LOS MODALS-->
+                    <div id="cont-modal-sys"></div>
+                    <!--FIN CONTENEDOR DE LOS MODALS-->
+                </div>
+
+                <!-- END #MAIN CONTENT -->
+
+                <div id="process-general" onclick="$(this).fadeOut()">
+                    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                </div> 
+                <!-- END MAIN CONTENT -->
+
+                <!-- INI CONFIG THEME -->
+                <div class="demo">
+                    <span id="demo-setting" style="padding-top: 6px;"><i class="fa fa-cogs fa-spin txt-color-blueDark"></i></span> 
+                    <form>
+                        <legend class="no-padding margin-bottom-10" style="font-size: 13px;"><b>Opciones de Apariencia</b></legend>
+                        <section>
+                            <label>
+                                <input name="subscription" id="smart-fixed-header" type="checkbox" class="checkbox style-0">
+                                <span class="tr-language" data-tr="encabezado_fijo"></span>
+                            </label>
+                            <label>
+                                <input type="checkbox" name="terms" id="smart-fixed-navigation" class="checkbox style-0">
+                                <span class="tr-language" data-tr="menu_fijo"></span>
+                            </label>
+                            <label>
+                                <input type="checkbox" name="terms" id="smart-fixed-ribbon" class="checkbox style-0">
+                                <span class="tr-language" data-tr="navegacion_fijo"></span>
+                            </label>
+                            <label>
+                                <input type="checkbox" name="terms" id="smart-fixed-footer" class="checkbox style-0">
+                                <span class="tr-language" data-tr="footer_fijo"></span>
+                            </label>
+                            <label>
+                                <input type="checkbox" name="terms" id="smart-fixed-container" class="checkbox style-0">
+                                <span class="tr-language" data-tr="contenido_centrado"></span>
+                            </label>
+                            <label>
+                                <input type="checkbox" name="terms" id="smart-rtl" class="checkbox style-0">
+                                <span class="tr-language" data-tr="menu_derecha"></span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="smart-topmenu" class="checkbox style-0">
+                                <span class="tr-language" data-tr="menu_arriba"></span>
+                            </label> 
+                            <label>
+                                <input type="checkbox" id="colorblind-friendly" class="checkbox style-0">
+                                <span class="tr-language" data-tr="para_daltonicos"></span>
+                            </label>
+                            <span id="smart-bgimages"></span>
+                        </section>
+                        <section>
+                            <h6 class="margin-top-10 semi-bold margin-bottom-5 tr-language" data-tr="reset_options"></h6>
+                            <a href="javascript:void(0);" class="btn btn-xs btn-block btn-primary" id="reset-smart-widget">
+                                <i class="fa fa-refresh"></i> <span class="tr-language" data-tr="reset_theme"></span>
+                            </a>
+                        </section> 
+                        <h6 class="margin-top-10 semi-bold margin-bottom-5 tr-language" data-tr="estilos"></h6>
+                        <section id="smart-styles">
+                            <a href="javascript:void(0);" id="smart-style-0" data-skinlogo="public/theme/smart/img/logo.png" class="btn btn-block btn-xs txt-color-white margin-right-5" style="background-color:#4E463F;">
+                                <i class="fa fa-check fa-fw" id="skin-checked"></i> <span class="tr-language" data-tr="defecto"></span>
+                            </a>
+                            <a href="javascript:void(0);" id="smart-style-1" data-skinlogo="public/theme/smart/img/logo-white.png" class="btn btn-block btn-xs txt-color-white tr-language" style="background:#3A4558;" data-tr="oscuro_elegante"></a>
+                            <a href="javascript:void(0);" id="smart-style-2" data-skinlogo="public/theme/smart/img/logo-blue.png" class="btn btn-xs btn-block txt-color-darken margin-top-5 tr-language" style="background:#fff;" data-tr="ultra_claro"></a>
+                            <a href="javascript:void(0);" id="smart-style-3" data-skinlogo="public/theme/smart/img/logo-pale.png" class="btn btn-xs btn-block txt-color-white margin-top-5 tr-language" style="background:#f78c40" data-tr="anaranjado"></a>
+                            <a href="javascript:void(0);" id="smart-style-4" data-skinlogo="public/theme/smart/img/logo-pale.png" class="btn btn-xs btn-block txt-color-white margin-top-5 tr-language" style="background: #bbc0cf; border: 1px solid #59779E; color: #17273D !important;" data-tr="pixel"></a> 
+                            <a href="javascript:void(0);" id="smart-style-5" data-skinlogo="public/theme/smart/img/logo-pale.png" class="btn btn-xs btn-block txt-color-white margin-top-5 tr-language" style="background: rgba(153, 179, 204, 0.2); border: 1px solid rgba(121, 161, 221, 0.8); color: #17273D !important;" data-tr="trasparente"></a>
+                            <a href="javascript:void(0);" id="smart-style-6" data-skinlogo="public/theme/smart/img/logo-pale.png" class="btn btn-xs btn-block txt-color-white margin-top-6 tr-language" style="background: #2196F3; border: 1px solid rgba(0, 0, 0, 0.3); color: #FFF !important;" data-tr="celeste"></a>
+                        </section>
+                    </form> 
+                </div>
+                <!-- END CONFIG THEME -->
+
+            </div>
+            <!-- END MAIN PANEL -->
+
+            <script>
+                $('.lv-out').click(function () {
+                    let u = $(this).data('user');
+                    Exe.InitDom.logOut(u);
+                });
+                $('.lv-cp').click(function () {
+                    alert('cambia pass');
+                });
+                setTimeout(function () {
+                    $("#search-fld").autocomplete({
+                        source: SYS_MENU,
+                        select: function (event, ui) {
+                            this.alias = ui.item.alias;
+                            this.root = ui.item.root;
+
+                            var t = '&nbsp;&nbsp;&nbsp;&nbsp;' + ui.item.title;
+                            var e = ui.item.evento;
+                            if ($('#li-' + ui.item.alias).length) {
+                                $('#li-' + ui.item.alias).remove();
+                            }
+                            eval(e);
+                            /*una vez insertado el titulo se detendra el interval*/
+                            var interval = setInterval(function () {
+                                if ($('#li-' + ui.item.alias).length) {
+                                    $('#li-' + ui.item.alias).find('a').html(t);
+                                    clearInterval(interval);
+                                }
+                            }, 10);
+                        }
+                    });
+                }, 1000);
+            </script>
+
+        <?php endif; ?>
+
+
+
